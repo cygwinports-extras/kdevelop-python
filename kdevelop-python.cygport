@@ -1,0 +1,16 @@
+inherit kde4 python
+
+NAME="kdevelop-python"
+VERSION=1.6.0
+RELEASE=1
+CATEGORY="Devel"
+SUMMARY="KDE Integrated Development Environment (Python plugin)"
+DESCRIPTION="KDevelop is an Integrated Development Environment to be used for
+a wide variety of programming tasks."
+HOMEPAGE="http://www.kdevelop.org/"
+SRC_URI="mirror://kde/stable/kdevelop/4.${VERSION#*.}/src/kdev-python-${VERSION}.tar.xz"
+SRC_DIR="kdev-python-${VERSION}"
+PATCH_URI="
+	1.6.0-format-parsetuple.patch
+	1.6.0-cygwin.patch
+"

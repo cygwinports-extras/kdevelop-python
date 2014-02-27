@@ -1,0 +1,22 @@
+--- origsrc/kdev-python-1.6.0/python-src/configure	2013-12-07 13:13:15.000000000 -0600
++++ src/kdev-python-1.6.0/python-src/configure	2014-02-26 23:17:26.785918500 -0600
+@@ -5658,7 +5658,7 @@ then
+   { $as_echo "$as_me:${as_lineno-$LINENO}: checking whether gcc supports ParseTuple __format__" >&5
+ $as_echo_n "checking whether gcc supports ParseTuple __format__... " >&6; }
+   save_CFLAGS=$CFLAGS
+-  CFLAGS="$CFLAGS -Werror"
++  CFLAGS="$CFLAGS -Werror=format"
+   cat confdefs.h - <<_ACEOF >conftest.$ac_ext
+ /* end confdefs.h.  */
+ 
+--- origsrc/kdev-python-1.6.0/python-src/configure.in	2013-12-07 13:13:15.000000000 -0600
++++ src/kdev-python-1.6.0/python-src/configure.in	2014-02-26 23:17:17.846407100 -0600
+@@ -1176,7 +1176,7 @@ if test "$GCC" = "yes"
+ then
+   AC_MSG_CHECKING(whether gcc supports ParseTuple __format__)
+   save_CFLAGS=$CFLAGS
+-  CFLAGS="$CFLAGS -Werror"
++  CFLAGS="$CFLAGS -Werror=format"
+   AC_COMPILE_IFELSE([
+     AC_LANG_PROGRAM([[void f(char*,...)__attribute((format(PyArg_ParseTuple, 1, 2)));]], [[]])
+   ],[

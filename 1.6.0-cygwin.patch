@@ -1,0 +1,40 @@
+--- origsrc/kdev-python-1.6.0/parser/CMakeLists.txt	2013-12-07 13:13:15.000000000 -0600
++++ src/kdev-python-1.6.0/parser/CMakeLists.txt	2014-02-26 23:40:05.721645100 -0600
+@@ -16,7 +16,7 @@ set(kdev4pythonparser_LIBRARIES
+     ${KDE4_KDECORE_LIBS}
+     ${KDEVPLATFORM_LANGUAGE_LIBRARIES}
+     ${QT_QTCORE_LIBRARY}
+-    ${kdevpython_BINARY_DIR}/python-src/libpython2.7-kdevelop.so
++    ${kdevpython_BINARY_DIR}/python-src/libpython2.7-kdevelop.dll.a
+     PARENT_SCOPE
+ )
+ 
+@@ -25,7 +25,7 @@ target_link_libraries(kdev4pythonparser
+     ${KDE4_KDECORE_LIBS}
+     ${KDEVPLATFORM_LANGUAGE_LIBRARIES}
+     ${QT_QTCORE_LIBRARY}
+-    ${kdevpython_BINARY_DIR}/python-src/libpython2.7-kdevelop.so
++    ${kdevpython_BINARY_DIR}/python-src/libpython2.7-kdevelop.dll.a
+ )
+ 
+ add_dependencies(kdev4pythonparser parser)
+--- origsrc/kdev-python-1.6.0/python-src/CMakeLists.txt	2013-12-07 13:13:15.000000000 -0600
++++ src/kdev-python-1.6.0/python-src/CMakeLists.txt	2014-02-26 23:47:52.611349700 -0600
+@@ -1,5 +1,5 @@
+ add_custom_command(
+-    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libpython2.7-kdevelop.so
++    OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/libpython2.7-kdevelop.dll.a
+     COMMAND /bin/bash ${CMAKE_CURRENT_SOURCE_DIR}/configure --enable-shared --without-pymalloc WORKING_DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}
+     COMMAND /usr/bin/env make -C ${CMAKE_CURRENT_BINARY_DIR}
+ )
+@@ -7,8 +7,8 @@ add_custom_command(
+ add_custom_target(
+     parser
+     COMMAND cmake -E echo
+-    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libpython2.7-kdevelop.so
++    DEPENDS ${CMAKE_CURRENT_BINARY_DIR}/libpython2.7-kdevelop.dll.a
+ )
+ 
+-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpython2.7-kdevelop.so.1.0 DESTINATION ${LIB_INSTALL_DIR})
++install(FILES ${CMAKE_CURRENT_BINARY_DIR}/libpython2.7-kdevelop.dll DESTINATION ${BIN_INSTALL_DIR})
+ 
